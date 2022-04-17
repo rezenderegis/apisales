@@ -1,24 +1,25 @@
-import {Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn} from 'typeorm'
+import {Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn} from 'typeorm';
 
 @Entity('products')
+
 class Product {
 
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
-    @Column
+    @Column()
     name: string;
 
     @Column('decimal')
-    price: number:
+    price: number;
 
     @Column('int')
     quantity: number;
 
-    @CreateDateColumn
+    @CreateDateColumn()
     created_at: Date;
 
-    @UpdateDateColumn
+    @UpdateDateColumn()
     updated_at: Date;
 
 
