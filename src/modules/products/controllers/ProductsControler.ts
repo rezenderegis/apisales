@@ -11,7 +11,7 @@ export default class ProducsController {
     public async index(request: Request, response: Response): Promise<Response> {
         const listProducts = new ListProductService();
 
-        const products = listProducts.execute();
+        const products = await listProducts.execute();
 
         return response.json(products);
     }
@@ -21,7 +21,7 @@ export default class ProducsController {
         
         const showProduct = new ShowProductService();
         
-        const product = showProduct.execute({id});
+        const product = await showProduct.execute({id});
 
         return response.json(product);
 

@@ -1,4 +1,4 @@
-import { getCustomRepository, getRepository } from "typeorm";
+import { getCustomRepository } from "typeorm";
 import Product from "../typeorm/entities/Products";
 import { ProductRepository } from "../typeorm/repositories/ProductsRepository";
 
@@ -10,7 +10,7 @@ class ListProductService {
         const productsRepository = getCustomRepository(ProductRepository);
 
         const products = productsRepository.find();
-
+        console.log(">>>" + JSON.stringify(products));
         return products;
         
     }
