@@ -104,6 +104,13 @@
     "@types/qs" "*"
     "@types/serve-static" "*"
 
+"@types/joi@^17.2.3":
+  "integrity" "sha512-dGjs/lhrWOa+eO0HwgxCSnDm5eMGCsXuvLglMghJq32F6q5LyyNuXb41DHzrg501CKNOSSAHmfB7FDGeUnDmzw=="
+  "resolved" "https://registry.npmjs.org/@types/joi/-/joi-17.2.3.tgz"
+  "version" "17.2.3"
+  dependencies:
+    "joi" "*"
+
 "@types/json5@^0.0.29":
   "integrity" "sha1-7ihweulOEdK4J7y+UnC86n8+ce4="
   "resolved" "https://registry.npmjs.org/@types/json5/-/json5-0.0.29.tgz"
@@ -910,7 +917,7 @@
   "resolved" "https://registry.npmjs.org/isexe/-/isexe-2.0.0.tgz"
   "version" "2.0.0"
 
-"joi@17.x.x":
+"joi@*", "joi@17.x.x":
   "integrity" "sha512-OX5dG6DTbcr/kbMFj0KGYxuew69HPcAE3K/sZpEV2nP6e/j/C0HV+HNiBPCASxdx5T7DMoa0s8UeHWMnb6n2zw=="
   "resolved" "https://registry.npmjs.org/joi/-/joi-17.6.0.tgz"
   "version" "17.6.0"
