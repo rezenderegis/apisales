@@ -24,8 +24,6 @@ class CreateProductService {
             price,
             quantity,
         });
-        console.log(product);
-
 
         await productsRepository.save(product);
         return product;

@@ -10,7 +10,6 @@ class ListProductService {
         const productsRepository = getCustomRepository(ProductRepository);
 
         const products = productsRepository.find();
-        console.log(">>>" + JSON.stringify(products));
         return products;
         
     }
