@@ -6,6 +6,8 @@ import User from "../typeorm/entities/Users";
 import UsersRepository from "../typeorm/repositories/UserRepository";
 import {sign} from 'jsonwebtoken';
 
+//We created this file do use global application
+import authConfig from '@config/auth';
 interface IRequest {
     email: string;
     password: string;
@@ -19,7 +21,7 @@ interface IResponse {
 class CreateSessionsService {
 
 
-    public async execute({ email, password }: IRequest): Promise<User> {
+    public async execute({ email, password }: IRequest): Promise<IResponse> {
 
         const userRepository = getCustomRepository(UsersRepository);
         const user = await userRepository.findByEmail(email);
@@ -43,10 +45,11 @@ class CreateSessionsService {
         2. Hash - secrete use to create. Include every informatio or md5 hash
         */
         
-        const token = sign({}, '7456fd7a4c7885ab2066c5fc3bb99872', {
+        const token = sign({}, authConfig.jwt.secret, {
             subject: user.id,
-            expiresIn: '1d',
+            expiresIn: authConfig.jwt.expiresIn,
         });
+
         return {
             user, 
             token

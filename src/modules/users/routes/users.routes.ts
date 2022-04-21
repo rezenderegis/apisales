@@ -1,6 +1,7 @@
 import { celebrate, Segments,Joi } from "celebrate";
 import { Router } from "express";
 import UsersController from "../controllers/UsersController";
+import isAuthenticated from "../middlewaressss/isAuthenticated";
 
 const userRouter = Router();
 const userController = new UsersController();
@@ -14,6 +15,6 @@ celebrate({[Segments.BODY]: {
 }),
 userController.create);
 
-userRouter.get('/', userController.index);
+userRouter.get('/', isAuthenticated, userController.index);
 
 export default userRouter;
