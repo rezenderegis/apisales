@@ -3,7 +3,11 @@ import { NextFunction, Request, Response } from "express";
 import {verify} from 'jsonwebtoken';
 import authConfig from '@config/auth';
 
-
+interface TokenPayload {
+    iat: string;
+    exp: number;
+    sub: string;
+}
 /**
  * We'll need to include this meddleware in every route 
  * to protect.
@@ -29,6 +33,16 @@ export default function isAuthenticated (
         this application.
         */
         const decodeToken = verify(token, authConfig.jwt.secret);
+        
+        //Inside decodeToken has sub tha is ID User
+        const {sub} = decodeToken as TokenPayload;
+        
+        //Insert inside request object 
+        request.user = {
+            id: sub, 
+            
+        }
+        
         return next();
     } catch {
         throw new AppError('Invalid jwt token');

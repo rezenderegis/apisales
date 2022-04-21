@@ -1,7 +1,7 @@
 import { celebrate, Segments,Joi } from "celebrate";
 import { Router } from "express";
 import UsersController from "../controllers/UsersController";
-import isAuthenticated from "../middlewaressss/isAuthenticated";
+import isAuthenticated from "../../../shared/http/middleware/isAuthenticated";
 
 const userRouter = Router();
 const userController = new UsersController();
@@ -13,6 +13,7 @@ celebrate({[Segments.BODY]: {
     password: Joi.string().required(),
     },
 }),
+isAuthenticated,
 userController.create);
 
 userRouter.get('/', isAuthenticated, userController.index);
