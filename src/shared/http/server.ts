@@ -8,11 +8,14 @@ import AppError from '@shared/errors/AppError';
 
 //Já importa e le o arquivo ormconfig
 import '@shared/typeorm';
-
+import uploadConfig from '@config/upload';
 const app = express();
 app.use(cors());
 
 app.use(express.json());
+
+//This configuration will allow front end to see the file just ask /files/filename
+app.use('/files', express.static(uploadConfig.diretory));
 
 app.use(routes);
 
