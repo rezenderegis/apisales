@@ -10,7 +10,7 @@ const userRouter = Router();
 const userController = new UsersController();
 const usersAvatarController = new UsersAvatarController();
 
-//We have herer multer wit defined configuration
+//We have here multer wit defined configuration
 const upload = multer(uploadConfig);
 
 userRouter.post('/', 
