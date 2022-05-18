@@ -37,3 +37,4 @@ class CreateBrandsService {
 
 
 }
+export default CreateBrandsService;

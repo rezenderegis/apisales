@@ -20,7 +20,6 @@ celebrate({[Segments.BODY]: {
     password: Joi.string().required(),
     },
 }),
-isAuthenticated,
 userController.create);
 
 userRouter.get('/', isAuthenticated, userController.index);

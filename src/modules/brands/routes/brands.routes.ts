@@ -3,6 +3,12 @@ import isAuthenticated from "@shared/http/middleware/isAuthenticated";
 import BrandsController from "../controllers/BrandsControllers";
 const brandsRouter = Router();
 const brandsController = new BrandsController();
-brandsRouter.get('/', isAuthenticated, brandsController.index);
+
+brandsRouter.get('/', brandsController.index);
+
+brandsRouter.post('/',  brandsController.create);
+
+brandsRouter.put('/:id', brandsController.update);
+
 
 export default brandsRouter;
