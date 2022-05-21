@@ -10,5 +10,6 @@ brandsRouter.post('/',  brandsController.create);
 
 brandsRouter.put('/:id', brandsController.update);
 
+brandsRouter.get('/:id', brandsController.show);
 
 export default brandsRouter;
