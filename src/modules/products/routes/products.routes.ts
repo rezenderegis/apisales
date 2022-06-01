@@ -2,10 +2,11 @@ import {Router} from 'express';
 import ProducsController from '../controllers/ProductsControler';
 import {celebrate,Joi, Segments} from 'celebrate';
 import { ProductRepository } from '../typeorm/repositories/ProductsRepository';
+import isAuthenticated from '@shared/http/middleware/isAuthenticated';
 const productsRouter = Router();
 const productsController = new ProducsController();
 
-productsRouter.get('/', productsController.index);
+productsRouter.get('/', isAuthenticated, productsController.index);
 
 /*Included celebrate to validate request. Middleware on celebrate function
 Import here and server.ts
@@ -14,6 +15,7 @@ productsRouter.get('/:id',
 celebrate({
     [Segments.PARAMS]: {id:Joi.string().uuid().required(),}
 }),
+isAuthenticated,
 productsController.show);
 
 
@@ -24,6 +26,7 @@ celebrate({[Segments.BODY]: {
     quantity: Joi.number().required(),
     }
 }),
+isAuthenticated,
 productsController.create);
 
 productsRouter.put('/:id', 
@@ -35,12 +38,14 @@ productsRouter.put('/:id',
         },
         [Segments.PARAMS]: { id: Joi.string().uuid().required(), }
     }),
+isAuthenticated,
 productsController.update);
+
 productsRouter.delete('/:id', 
     celebrate({
         [Segments.PARAMS]: { id: Joi.string().uuid().required(), }
     }),
-
+isAuthenticated,
 productsController.delete);
 
 /* productsRouter is a file with all routes. We need to import this file
