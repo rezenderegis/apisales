@@ -12,15 +12,13 @@ class DeleteBrandsService {
 
         const brandsRepository = getCustomRepository(BrandsRepository);
 
-        const brand = brandsRepository.findOne(id);
+        const brand = await brandsRepository.findOne(id);
 
         if (!brand) {
             throw new AppError("Brand not found");
         }
 
         await brandsRepository.remove(brand);
-
-
 
     }
 

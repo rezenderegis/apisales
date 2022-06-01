@@ -3,6 +3,7 @@ import ListBrandsService from "../services/ListBrandsService";
 import CreateBrandsService from "../services/CreateBrandsService";
 import UpdateBrandsService from "../services/UpdateBrandsSerice";
 import ShowBrandsSerive from "../services/ShowBrandsService";
+import DeleteBrandsService from "../services/DeleteBrandsService";
 export default class BrandsController {
 
 public async index(request: Request, response: Response): Promise<Response>{
@@ -58,6 +59,20 @@ public async show (request: Request, response: Response): Promise<Response> {
 
 }
 
+public async delete(request: Request, response: Response): Promise<Response> {
+
+    const {id} = request.params;
+    console.log(id);
+
+    const deleteBrand = new DeleteBrandsService();
+
+    const brand = await deleteBrand.execute({
+        id,
+    });
+
+    return response.json(brand);
+
+}
 
 
 }

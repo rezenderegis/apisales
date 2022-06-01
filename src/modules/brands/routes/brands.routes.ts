@@ -12,4 +12,6 @@ brandsRouter.put('/:id', brandsController.update);
 
 brandsRouter.get('/:id', brandsController.show);
 
+brandsRouter.delete('/:id', brandsController.delete);
+
 export default brandsRouter;
