@@ -6,7 +6,7 @@ import { CustomersRepository } from "../typeorm/repositories/CustomersRepository
 interface IRequest {
     name: string;
     gender: string;
-    security_number: number;
+    security_number: string;
     person_type: string;
     
 }
@@ -15,7 +15,6 @@ class CreateCustomerService {
     public async execute ({name, gender, security_number, person_type}: IRequest): Promise<Customers> {
         const customerRepository = getCustomRepository(CustomersRepository);
         const customerExists = await customerRepository.findByName(name);
-
         //TODO: Change to check security_number
         if (customerExists) {
             throw new AppError('There is already one customer with this name');
@@ -27,7 +26,6 @@ class CreateCustomerService {
             security_number,
             person_type,
         });
-
         await customerRepository.save(customer);
         return customer;
     }
