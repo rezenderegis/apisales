@@ -3,6 +3,7 @@ import { Request, Response } from "express";
 import CreateCustomerService from "../services/CreateCustomerService";
 import DeleteCustomerService from "../services/DeleteCustomerSerivce";
 import ListCustomerService from "../services/ListCustomerService";
+import ShowCustomerService from "../services/ShowCustomerService";
 import UpdateCustomerService from "../services/UpdateCustomerService";
 
 export default class CustomerController {
@@ -57,6 +58,18 @@ export default class CustomerController {
      await deleteCustomer.execute({id});
 
         return response.json([]);
+    }
+
+    public async show (request: Request, response: Response): Promise<Response> {
+
+        const {id} = request.params;
+        
+        const showCustomerService = new ShowCustomerService;
+
+        const customer = await showCustomerService.execute({id});
+
+        return response.json(customer);
+
     }
 
 }
