@@ -62,7 +62,6 @@ public async show (request: Request, response: Response): Promise<Response> {
 public async delete(request: Request, response: Response): Promise<Response> {
 
     const {id} = request.params;
-    console.log(id);
 
     const deleteBrand = new DeleteBrandsService();
 
