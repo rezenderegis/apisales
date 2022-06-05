@@ -5,6 +5,7 @@ import {Router} from 'express';
 import userRouter from '@modules/users/routes/users.routes';
 import sessionsRouter from '@modules/users/routes/sessions.routes';
 import customerRouter from '@modules/customers/routes/customers.routes'
+import salesRouter from '@modules/sales/routes/sales.routes'
 const routes = Router();
 
 routes.use('/products', productsRouter);
@@ -15,4 +16,5 @@ routes.use('/sessions', sessionsRouter);
 
 routes.use('/brands', brandsRouter)
 routes.use('/customers', customerRouter);
+routes.use('/sales', salesRouter);
 export default routes;
