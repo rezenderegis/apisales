@@ -27,8 +27,19 @@ class SendForgotPasswordEmailService {
 
         console.log(token);
         await EtherealMail.sendMail({
-           to: email,
-           body: `Solicitação de redefinição de senha: ${token?.token}`,
+           to: {
+               name: user.name,
+               email: user.email,
+           },
+           subject: '[API Sales] Password forgot',
+           templateData: {
+               template: `Hello {{name}}: {{token}}`,
+               //Allo {{}} because of Handlebars Mail Template
+               variables: {
+                   name: user.name,
+                   token: token?.token,
+               },
+           },
        });
     }
 
