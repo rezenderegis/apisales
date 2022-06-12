@@ -14,4 +14,26 @@ export class CustomersRepository extends Repository<Customers> {
         return customer;
     }
 
+
+    public async findById (id: string): Promise<Customers | undefined> {
+        const customer = await this.findOne({
+          where : {
+              id,
+          }
+        }) ; 
+
+        return customer;
+      }
+
+      public async findByEmail (email: string): Promise<Customers | undefined> {
+
+          const customer = await this.findOne({
+              where : {
+                  email,
+              }
+          });
+
+          return customer
+      }
+
 }

@@ -22,12 +22,12 @@ export default class CustomerController {
     public async create(request: Request, response: Response): Promise<Response> {
         console.log('Aqui');
 
-        const {name, gender, security_number, person_type} = request.body;
+        const {name, email, gender, security_number, person_type} = request.body;
 
         const createCustomer = new CreateCustomerService();
 
         const customer = await createCustomer.execute({
-            name, gender, security_number, person_type
+            name, email, gender, security_number, person_type
 
         });
 
@@ -36,14 +36,14 @@ export default class CustomerController {
 
     public async update (request: Request, response: Response): Promise<Response> {
         
-        const {name, gender, security_number, person_type} = request.body;
+        const {name,email, gender, security_number, person_type} = request.body;
         
         const {id} = request.params;
 
         const updateCustomer = new UpdateCustomerService;
 
         const customer = await updateCustomer.execute({
-            id,name, gender, security_number, person_type
+            id,name, email, gender, security_number, person_type
         });
 
         return response.json(customer);

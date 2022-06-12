@@ -6,6 +6,7 @@ import { CustomersRepository } from "../typeorm/repositories/CustomersRepository
 interface IRequest {
     id: string;
     name: string;
+    email: string;
     gender: string;
     security_number: string;
     person_type: string;
@@ -13,7 +14,7 @@ interface IRequest {
 
 class UpdateCustomerService {
 
-    public async execute({id,name,gender,security_number,person_type}:IRequest): Promise<Customers> {
+    public async execute({id,name,email,gender,security_number,person_type}:IRequest): Promise<Customers> {
 
         const customerRespository = getCustomRepository(CustomersRepository);
 
@@ -24,6 +25,7 @@ class UpdateCustomerService {
         }
 
         customer.name = name;
+        customer.email = email;
         customer.gender = gender;
         customer.security_number = security_number;
         customer.person_type = person_type;

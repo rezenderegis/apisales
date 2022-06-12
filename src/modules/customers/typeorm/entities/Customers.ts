@@ -13,6 +13,9 @@ class Customers {
     gender: string;
 
     @Column()
+    email: string;
+
+    @Column()
     security_number: string;
 
     @Column()

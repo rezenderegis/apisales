@@ -5,6 +5,7 @@ import { CustomersRepository } from "../typeorm/repositories/CustomersRepository
 
 interface IRequest {
     name: string;
+    email: string;
     gender: string;
     security_number: string;
     person_type: string;
@@ -12,7 +13,7 @@ interface IRequest {
 }
 class CreateCustomerService {
 
-    public async execute ({name, gender, security_number, person_type}: IRequest): Promise<Customers> {
+    public async execute ({name, gender, security_number, person_type,email}: IRequest): Promise<Customers> {
         const customerRepository = getCustomRepository(CustomersRepository);
         const customerExists = await customerRepository.findByName(name);
         //TODO: Change to check security_number
@@ -21,6 +22,7 @@ class CreateCustomerService {
         }
 
         const customer = customerRepository.create({
+            email,
             name,
             gender,
             security_number,
