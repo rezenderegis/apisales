@@ -1,3 +1,4 @@
+import UsersRepository from "@modules/users/typeorm/repositories/UserRepository";
 import AppError from "@shared/errors/AppError";
 import { getCustomRepository } from "typeorm";
 import Customers from "../typeorm/entities/Customers";
@@ -22,6 +23,12 @@ class UpdateCustomerService {
     
         if (!customer) {
             throw new AppError('Customer not found.');
+        }
+
+        const customerUpdateEmail = await customerRespository.findByEmail(email);
+
+        if (customerUpdateEmail && customerUpdateEmail.id != id) {
+            throw new AppError('There is already one customer with this email');
         }
 
         customer.name = name;

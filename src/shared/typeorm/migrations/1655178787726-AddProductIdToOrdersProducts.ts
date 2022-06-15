@@ -23,6 +23,8 @@ export class AddProductIdToOrdersProducts1655178787726 implements MigrationInter
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
+        await queryRunner.dropForeignKey('orders_products', 'OrdersProductsProduct');
+        await queryRunner.dropColumn('orders_products', 'order_id');
     }
 
 }
