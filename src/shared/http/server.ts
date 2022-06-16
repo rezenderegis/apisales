@@ -3,6 +3,7 @@ import express, { NextFunction, Request, Response } from 'express';
 import 'express-async-errors';
 import cors from 'cors';
 import {errors} from 'celebrate';
+import {pagination} from 'typeorm-pagination';
 import routes from './routes';
 import AppError from '@shared/errors/AppError';
 
@@ -13,6 +14,9 @@ const app = express();
 app.use(cors());
 
 app.use(express.json());
+
+//This is a middleware
+app.use(pagination);
 
 //This configuration will allow front end to see the file just ask /files/filename
 app.use('/files', express.static(uploadConfig.diretory));
