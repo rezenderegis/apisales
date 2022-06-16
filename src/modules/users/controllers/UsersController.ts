@@ -2,6 +2,7 @@ import CreateProductService from "@modules/products/services/CreateProductServic
 import { Request, Response } from "express";
 import CreateUserService from "../services/CreateUserService";
 import ListUserService from "../services/ListUserService";
+import { instanceToInstance } from 'class-transformer';
 
 export default class UsersController {
     
@@ -10,9 +11,9 @@ export default class UsersController {
 
         const listUsers = new ListUserService();
 
-        const products = await listUsers.execute();
+        const users = await listUsers.execute();
         
-        return response.json(products);
+        return response.json(instanceToInstance(users));
 
     }
 
@@ -30,7 +31,7 @@ export default class UsersController {
 
         });
         
-        return response.json(user);
+        return response.json(instanceToInstance(user));
         
     }
 

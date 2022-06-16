@@ -4,6 +4,7 @@ import CreateUserService from "../services/CreateUserService";
 import ListUserService from "../services/ListUserService";
 import ShowProfileService from "../services/ShowProfileService";
 import UpdateProfileService from "../services/UpdateProfileService";
+import { instanceToInstance } from 'class-transformer';
 
 export default class ProfileController {
     
@@ -14,7 +15,7 @@ export default class ProfileController {
         const user_id = request.user.id;
         const user = await showProfile.execute({user_id});
         
-        return response.json(user);
+        return response.json(instanceToInstance(user));
 
     }
 
@@ -36,7 +37,7 @@ export default class ProfileController {
 
         });
         
-        return response.json(user);
+        return response.json(instanceToInstance(user));
         
     }
 

@@ -1,5 +1,6 @@
 import {Request, Response} from 'express';
 import CreateSessionsService from '../services/CreationSessionService';
+import { instanceToInstance } from 'class-transformer';
 
 export default class SessionsController {
 
@@ -19,7 +20,7 @@ export default class SessionsController {
          * will response the user. We'll need to implement now the 
          * token response with Json Web Token. 
          */
-        return response.json(user);
+        return response.json(instanceToInstance(user));
 
     }
 
