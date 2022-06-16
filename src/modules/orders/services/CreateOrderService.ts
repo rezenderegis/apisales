@@ -2,9 +2,9 @@ import { CustomersRepository } from "@modules/customers/typeorm/repositories/Cus
 import { ProductRepository } from "@modules/products/typeorm/repositories/ProductsRepository";
 import AppError from "@shared/errors/AppError";
 import { getCustomRepository } from "typeorm";
-import Order from "../typeorm/entities/order";
-import OrdersProducts from "../typeorm/entities/OrdersProducts";
-import { OrderRepository } from "../typeorm/reposotories/OrdersReposotory";
+import Orders from "@modules/orders/typeorm/entities/Orders";
+import OrdersRepository from "@modules/orders/typeorm/reposotories/OrdersRepository";
+
 
 interface IProduct {
     id: string;
@@ -19,10 +19,8 @@ interface IRequest {
 
 class CreateOrderService {
 
-    public async execute({customer_id, products}: IRequest ): Promise<Order> {
-
-        const ordersRepository = getCustomRepository(OrderRepository);
-        console.log('Aqui');
+    public async execute({customer_id, products}: IRequest ): Promise<Orders> {
+        const ordersRepository = getCustomRepository(OrdersRepository);
 
         const customerRepository = getCustomRepository(CustomersRepository);
 
@@ -30,7 +28,6 @@ class CreateOrderService {
        
 
         const customerExists = await customerRepository.findById(customer_id);
-        console.log(customerExists);
 
         if (!customerExists) {
            throw new AppError('Could not find any customer with this ID');
@@ -69,7 +66,10 @@ class CreateOrderService {
             quantity: product.quantity,
             price: existsProducts.filter(p => p.id == product.id)[0].price,
         }));
-
+        console.log("Aqui -->>>>>>>>>>>>>>");
+        console.log(customerExists);
+        console.log(serializedProducts);
+        
         const order = await ordersRepository.createOrder({
             customer: customerExists,
             products: serializedProducts,

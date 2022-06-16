@@ -1,7 +1,5 @@
 import {Router} from 'express';
-import ProducsController from '../controllers/ProductsControler';
 import {celebrate,Joi, Segments} from 'celebrate';
-import { ProductRepository } from '../typeorm/repositories/ProductsRepository';
 import isAuthenticated from '@shared/http/middleware/isAuthenticated';
 import OrdersControler from '../controllers/OrdersControler';
 const ordersRouter = Router();
