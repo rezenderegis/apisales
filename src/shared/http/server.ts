@@ -11,10 +11,16 @@ import AppError from '@shared/errors/AppError';
 //Já importa e le o arquivo ormconfig
 import '@shared/typeorm';
 import uploadConfig from '@config/upload';
+import rateLimiter from '@shared/http/middleware/rateLimiter';
+
+
 const app = express();
 app.use(cors());
 
 app.use(express.json());
+
+//We need to insert the middleware of rate-limite above express() because needs before everithing
+app.use(rateLimiter);
 
 //This is a middleware
 app.use(pagination);
