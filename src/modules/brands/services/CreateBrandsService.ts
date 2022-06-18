@@ -1,6 +1,4 @@
-import productsRouter from "@modules/products/routes/products.routes";
 import AppError from "@shared/errors/AppError";
-import { string } from "joi"
 import { getCustomRepository } from "typeorm"
 import Brands from "../typeorm/entities/Brands";
 import { BrandsRepository } from "../typeorm/repositories/BrandsRepository";

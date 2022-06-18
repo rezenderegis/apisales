@@ -1,8 +1,8 @@
 import AppError from "@shared/errors/AppError";
 import { getCustomRepository } from "typeorm";
-import Orders from "@modules/orders/typeorm/entities/Orders";
+import Orders from "@modules/orders/infra/http/typeorm/entities/Orders";
 
-import OrdersRepository from "../typeorm/reposotories/OrdersRepository";
+import OrdersRepository from "../infra/http/typeorm/reposotories/OrdersRepository";
 
 
 interface IRequest {

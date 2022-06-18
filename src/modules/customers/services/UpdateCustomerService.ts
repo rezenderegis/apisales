@@ -1,8 +1,8 @@
-import UsersRepository from "@modules/users/typeorm/repositories/UserRepository";
+import UsersRepository from "@modules/users/infra/http/typeorm/repositories/UserRepository";
 import AppError from "@shared/errors/AppError";
 import { getCustomRepository } from "typeorm";
-import Customers from "../typeorm/entities/Customers";
-import { CustomersRepository } from "../typeorm/repositories/CustomersRepository";
+import Customers from "../infra/http/typeorm/entities/Customers";
+import { CustomersRepository } from "../infra/http/typeorm/repositories/CustomersRepository";
 
 interface IRequest {
     id: string;

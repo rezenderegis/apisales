@@ -1,6 +1,6 @@
 import { getCustomRepository } from "typeorm";
-import Customers from "../typeorm/entities/Customers";
-import { CustomersRepository } from "../typeorm/repositories/CustomersRepository";
+import Customers from "../infra/http/typeorm/entities/Customers";
+import { CustomersRepository } from "../infra/http/typeorm/repositories/CustomersRepository";
 
 //This is default by the TYPEORM-PAGINATION
 interface IPaginateCustomer {

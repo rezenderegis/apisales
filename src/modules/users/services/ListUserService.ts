@@ -1,7 +1,6 @@
 import { getCustomRepository } from "typeorm";
-import UsersController from "../controllers/UsersController";
-import User from "../typeorm/entities/Users";
-import UsersRepository from "../typeorm/repositories/UserRepository";
+import User from "../infra/http/typeorm/entities/Users";
+import UsersRepository from "../infra/http/typeorm/repositories/UserRepository";
 
 class ListUserService {
 

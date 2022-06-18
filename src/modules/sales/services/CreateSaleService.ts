@@ -1,6 +1,6 @@
 import { getCustomRepository } from "typeorm";
-import Sales from "../typeorm/entities/Sales";
-import SalesRepository from "../typeorm/repositories/SalesRepository";
+import Sales from "../infra/http/typeorm/entities/Sales";
+import SalesRepository from "../infra/http/typeorm/repositories/SalesRepository";
 
 interface IRequest {
     sales_date: Date,

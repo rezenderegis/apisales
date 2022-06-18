@@ -1,9 +1,8 @@
 import AppError from "@shared/errors/AppError";
 import { hash } from "bcryptjs";
-import { Tracing } from "trace_events"
 import { getCustomRepository } from "typeorm";
-import User from "../typeorm/entities/Users";
-import UsersRepository from "../typeorm/repositories/UserRepository";
+import User from "../infra/http/typeorm/entities/Users";
+import UsersRepository from "../infra/http/typeorm/repositories/UserRepository";
 
 
 interface IRequest {
