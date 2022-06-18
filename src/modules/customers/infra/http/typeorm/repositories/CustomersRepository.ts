@@ -12,7 +12,7 @@ export class CustomersRepository implements IcustomersRepository{
         this.ormRepository = getRepository(Customers);
     }
 
-    public async create({name, email}: ICustomer): Promise<Customers> {
+    public async create({name, email, gender, security_number}: ICustomer): Promise<Customers> {
         const customer = this.ormRepository.create({name, email});
         await this.ormRepository.save(customer);
         return customer;

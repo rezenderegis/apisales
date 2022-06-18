@@ -1,8 +1,9 @@
 import AppError from "@shared/errors/AppError";
 import { compare, hash } from "bcryptjs";
 import { getCustomRepository } from "typeorm";
-import User from "../infra/http/typeorm/entities/Users";
-import UsersRepository from "../infra/http/typeorm/repositories/UserRepository";
+import User from "@modules/users/infra/http/typeorm/entities/Users";
+
+import UsersRepository from "@modules/users/infra/http/typeorm/repositories/UserRepository";
 import {sign} from 'jsonwebtoken';
 
 //We created this file do use global application

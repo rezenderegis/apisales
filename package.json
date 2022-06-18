@@ -50,6 +50,7 @@
     "redis": "^4.1.0",
     "reflect-metadata": "^0.1.13",
     "tsconfig-paths": "^3.14.1",
+    "tsyringe": "^4.7.0",
     "typeorm": "^0.2.29",
     "typeorm-pagination": "^2.0.3"
   }

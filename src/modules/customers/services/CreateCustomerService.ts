@@ -1,15 +1,18 @@
 import AppError from "@shared/errors/AppError";
+import { inject, injectable } from "tsyringe";
 import { ICreateCustomer } from "../domain/models/ICreateCustomer";
 import { ICustomer } from "../domain/models/ICustomer";
 import { IcustomersRepository } from "../domain/repositories/ICustomersRepository";
-import Customers from "../infra/http/typeorm/entities/Customers";
 
-
+@injectable()
 class CreateCustomerService {
 
     //We'll stop to instatiate repository, the controller will send 
-    constructor (private customerRepository: IcustomersRepository) {
-
+    constructor (
+        @inject('CustomersRepository')
+        private customerRepository: IcustomersRepository,
+        ) {
+      
     }
 
     public async execute ({name, gender, security_number,email}: ICreateCustomer): Promise<ICustomer> {

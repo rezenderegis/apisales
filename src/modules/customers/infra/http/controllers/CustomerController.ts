@@ -1,5 +1,6 @@
 import DeleteProductService from "@modules/products/services/DeleteProductService";
 import { Request, Response } from "express";
+import { container,injectable } from "tsyringe";
 import CreateCustomerService from "../../../services/CreateCustomerService";
 import DeleteCustomerService from "../../../services/DeleteCustomerSerivce";
 import ListCustomerService from "../../../services/ListCustomerService";
@@ -21,15 +22,22 @@ export default class CustomerController {
     }
 
     public async create(request: Request, response: Response): Promise<Response> {
-        console.log('Aqui');
 
         const {name, email, gender, security_number, person_type} = request.body;
 
+        /*Dependency Inversion - In this method we instanciate the repository on controller and pass to service
+        The problem of this method is tha we need to instanciate the class CustomerRepository all the time. 
+        The way to improve it is with lib  tsyringe tha make dependency injetion.
+       
+        With injection is not necessary to instanciate
         const customersRepository = new CustomersRepository();
-        const createCustomer = new CreateCustomerService(customersRepository);
+
+        */
+        
+        const createCustomer = container.resolve(CreateCustomerService); 
 
         const customer = await createCustomer.execute({
-            name, email, gender, security_number, person_type
+            name, email, gender, security_number
 
         });
 

@@ -7,7 +7,7 @@ import Customers from "../typeorm/entities/Customers";
 const customerController = new CustomerController();
 const customerRouter = Router();
 
-customerRouter.use(isAuthenticated);
+//customerRouter.use(isAuthenticated);
 customerRouter.post('/', 
 /*
 celebrate ({
