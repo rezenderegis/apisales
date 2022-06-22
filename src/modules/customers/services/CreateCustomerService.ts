@@ -11,11 +11,9 @@ class CreateCustomerService {
     constructor (
         @inject('CustomersRepository')
         private customerRepository: IcustomersRepository,
-        ) {
-      
-    }
+        ) {}
 
-    public async execute ({name, gender, security_number,email}: ICreateCustomer): Promise<ICustomer> {
+    public async execute ({name, gender, security_number,email,person_type}: ICreateCustomer): Promise<ICustomer> {
         const customerExists = await this.customerRepository.findByName(name);
         //TODO: Change to check security_number
         if (customerExists) {
@@ -27,6 +25,7 @@ class CreateCustomerService {
             name,
             gender,
             security_number,
+            person_type,
         });
 
         return customer;

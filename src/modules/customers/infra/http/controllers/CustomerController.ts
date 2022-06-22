@@ -6,7 +6,6 @@ import DeleteCustomerService from "../../../services/DeleteCustomerSerivce";
 import ListCustomerService from "../../../services/ListCustomerService";
 import ShowCustomerService from "../../../services/ShowCustomerService";
 import UpdateCustomerService from "../../../services/UpdateCustomerService";
-import { CustomersRepository } from "../typeorm/repositories/CustomersRepository";
 
 export default class CustomerController {
 
@@ -23,7 +22,7 @@ export default class CustomerController {
 
     public async create(request: Request, response: Response): Promise<Response> {
 
-        const {name, email, gender, security_number, person_type} = request.body;
+        const {name, email, gender, security_number,person_type} = request.body;
 
         /*Dependency Inversion - In this method we instanciate the repository on controller and pass to service
         The problem of this method is tha we need to instanciate the class CustomerRepository all the time. 
@@ -31,13 +30,12 @@ export default class CustomerController {
        
         With injection is not necessary to instanciate
         const customersRepository = new CustomersRepository();
-
         */
         
         const createCustomer = container.resolve(CreateCustomerService); 
 
         const customer = await createCustomer.execute({
-            name, email, gender, security_number
+            name, email, gender, security_number,person_type
 
         });
 
