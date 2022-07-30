@@ -15,7 +15,7 @@ interface IPaginateEmployee {
     data: Employee[]
 }
 
-class ListCustomerService {
+export default class ListEmployeeService {
 
 
     public async execute(): Promise<IPaginateEmployee> {

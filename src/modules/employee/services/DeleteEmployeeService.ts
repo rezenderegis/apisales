@@ -8,9 +8,9 @@ interface IRequest {
     name: string;
 }
 
-class UpdateEmployeeService {
+class DeleteEmployeeService {
 
-    public async execute ({id, name}: IRequest): Promise<Employee> {
+    public async execute ({id}: IRequest): Promise<void> {
 
         const employeeRepository = getCustomRepository(EmployeeRepository);
 
@@ -21,11 +21,8 @@ class UpdateEmployeeService {
 
         }
 
-        employee.name = name;
 
-        await employeeRepository.save(employee);
-
-        return employee;
+        await employeeRepository.remove(employee);
 
     }
 
