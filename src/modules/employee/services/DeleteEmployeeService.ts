@@ -8,7 +8,7 @@ interface IRequest {
     name: string;
 }
 
-class DeleteEmployeeService {
+export class DeleteEmployeeService {
 
     public async execute ({id}: IRequest): Promise<void> {
 

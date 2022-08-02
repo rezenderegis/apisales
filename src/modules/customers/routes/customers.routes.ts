@@ -19,6 +19,7 @@ celebrate ({
 }),
 */
 customerController.create);
+
 customerRouter.get('/',customerController.index);
 customerRouter.put('/:id',
 

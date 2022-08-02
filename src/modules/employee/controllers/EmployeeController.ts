@@ -2,7 +2,9 @@ import DeleteCustomerService from "@modules/customers/services/DeleteCustomerSer
 import ShowCustomerService from "@modules/customers/services/ShowCustomerService";
 import { Request, Response } from "express";
 import CreateEmployeeService from "../services/CreateEmployeeService";
+import { DeleteEmployeeService } from "../services/DeleteEmployeeService";
 import ListEmployeeService from "../services/ListEmployeeService";
+import ShowEmployeeService from "../services/ShowEmployeeService";
 import UpdateEmployeeService from "../services/UpdateEmloyeeService";
 import Employee from "../typeorm/entities/Employee";
 
@@ -51,9 +53,9 @@ export default class EmployeeController {
 
     public async delete (request: Request, response: Response): Promise<Response> {
 
-        const {id} = request.param;
+        const {id} = request.params;
 
-        const deleteEmployeeCustomerService = new DeleteCustomerService;
+        const deleteEmployeeCustomerService = new DeleteEmployeeService;
 
         await deleteEmployeeCustomerService.execute({id});
 
@@ -64,8 +66,8 @@ export default class EmployeeController {
     public async show(request: Request, response: Response): Promise<Response> {
 
         const {id} = request.params;
-
-        const showEmployeeService = new ShowCustomerService;
+        
+        const showEmployeeService = new ShowEmployeeService;
 
         const employee = await showEmployeeService.execute({id})
 

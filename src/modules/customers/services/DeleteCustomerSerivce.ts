@@ -10,7 +10,7 @@ interface IRequest {
 class DeleteCustomerService {
 
     public async execute ({id}: IRequest): Promise<void> {
-
+        console.log("ID" + id);
         const customerRepository = getCustomRepository(CustomersRepository);
 
         const customer = await customerRepository.findOne(id);

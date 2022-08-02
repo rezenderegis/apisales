@@ -52,7 +52,7 @@ export default class CustomerController {
     public async delete (request: Request, response: Response): Promise<Response> {
 
         const {id} = request.params;
-
+        console.log(id);
         const deleteCustomer = new DeleteCustomerService;
 
      await deleteCustomer.execute({id});

@@ -1,6 +1,6 @@
 import AppError from "@shared/errors/AppError";
 import { custom } from "joi";
-import { getCustomRepository } from "typeorm";
+import { getCustomRepository, SimpleConsoleLogger } from "typeorm";
 import Employee from "../typeorm/entities/Employee";
 import EmployeeRepository from "../typeorm/repositories/EmployeeRepository";
 
@@ -14,7 +14,7 @@ export default class ShowEmployeeService {
         const employeeRepository = getCustomRepository(EmployeeRepository);
 
         const employee = await employeeRepository.findOne(id);
-
+        console.log(employee);
         if (!employee) {
             throw new AppError('Customer not found');
         }

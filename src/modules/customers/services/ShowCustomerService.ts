@@ -13,8 +13,8 @@ class ShowCustomerService {
 
         const customerRepository = getCustomRepository(CustomersRepository);
 
-        const customer = await customerRepository.findOne(id);
-
+        const customer = await customerRepository.findById(id);
+       
         if (!customer) {
             throw new AppError('Customer not found');
         }
