@@ -1,7 +1,0 @@
-mkdir controllers
-mkdir routes
-mkdir services
-mkdir typeorm
-mkdir typeorm/entities
-mkdir typeorm/repositories
-
